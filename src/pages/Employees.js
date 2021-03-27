@@ -4,11 +4,16 @@ import Card from "../components/Card/index"
 
 class Employees extends Component {
     state = {
-        name: [],
+        name: []
     }
 
     componentDidMount() {
         this.findEmployee();
+        this.test();
+      }
+
+      test = () => {
+          API.getEmployee().then(res => console.log(res.data))
       }
 
     findEmployee = () => {
@@ -25,11 +30,40 @@ class Employees extends Component {
             <h3 className="text-center">
               Search for an Employee
             </h3>
-            <table><th>Employee Name</th><tr>
-            <td>{this.state.name.map((employee)=> (
-                <p>{employee.name.first} {employee.name.last}</p>
-            ))}</td></tr></table>
-            <Card image={this.state.name} handleBtnClick={this.handleBtnClick} />
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>{this.state.name.map((employee)=> (
+                            <p>{employee.name.first} {employee.name.last}</p>
+                            ))}
+                        </td>
+                        <td>{this.state.name.map((employee) => (
+                            <p>{employee.email}</p>
+                        ))}</td>
+                         <td>{this.state.name.map((employee) => (
+                            <p>{employee.phone}</p>
+                        ))}</td>
+                          <td>{this.state.name.map((employee) => (
+                            <p>{employee.city}</p>
+                        ))}</td>
+                          <td>{this.state.name.map((employee) => (
+                            <p>{employee.state}</p>
+                        ))}</td>
+                        {/* <td>{this.state.name.map((employee) => (
+                            <img src={employee.picture.thumbnail}/>
+                        ))}</td> */}
+                    </tr>
+                </tbody>
+            </table>
           </div>
         );
       }

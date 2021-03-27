@@ -25,9 +25,10 @@ class Employees extends Component {
             <h3 className="text-center">
               Search for an Employee
             </h3>
-            <h1>{this.state.name.map((employee)=> (
+            <table><th>Employee Name</th><tr>
+            <td>{this.state.name.map((employee)=> (
                 <p>{employee.name.first} {employee.name.last}</p>
-            ))}</h1>
+            ))}</td></tr></table>
             <Card image={this.state.name} handleBtnClick={this.handleBtnClick} />
           </div>
         );

@@ -30,38 +30,26 @@ class Employees extends Component {
             <h3 className="text-center">
               Search for an Employee
             </h3>
-            <table>
-                <thead>
+            <table className="table table-bordered table-striped">
+                <thead className="thead-dark">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>City, State</th>
                         <th>Photo</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>{this.state.name.map((employee)=> (
-                            <p>{employee.name.first} {employee.name.last}</p>
-                            ))}
-                        </td>
-                        <td>{this.state.name.map((employee) => (
-                            <p>{employee.email}</p>
-                        ))}</td>
-                         <td>{this.state.name.map((employee) => (
-                            <p>{employee.phone}</p>
-                        ))}</td>
-                          <td>{this.state.name.map((employee) => (
-                            <p>{employee.city}</p>
-                        ))}</td>
-                          <td>{this.state.name.map((employee) => (
-                            <p>{employee.state}</p>
-                        ))}</td>
-                        {/* <td>{this.state.name.map((employee) => (
-                            <img src={employee.picture.thumbnail}/>
-                        ))}</td> */}
-                    </tr>
+                    {this.state.name.map((employee) => (
+                        <tr><td>{employee.name.first} {employee.name.last}</td>
+                        <td>{employee.email}</td>
+                        <td>{employee.phone}</td>
+                        <td>{employee.location.city}, {employee.location.state}</td>
+                        <td><div><img src={employee.picture.medium}/></div></td>
+                        </tr>
+                    ))}         
                 </tbody>
             </table>
           </div>

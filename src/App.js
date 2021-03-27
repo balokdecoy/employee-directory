@@ -17,8 +17,8 @@ function App() {
         <Wrapper>
           <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
-          <Route exact path="employees" component={Employees} />
-          <Route exact path="search" component={Search} />
+          <Route exact path="/employees" component={Employees} />
+          <Route exact path="/search" component={Search} />
         </Wrapper>
         <Footer />
       </div>

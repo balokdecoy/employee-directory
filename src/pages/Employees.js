@@ -22,14 +22,24 @@ class Employees extends Component {
         }
         )).catch(err => console.log(err))
     }
+
+    handleChange = (event) => {
+        const search = event.target.value;
+        console.log(search)
+        API.getEmployee().then(res => this.setState({ search }))
+    }
   
     render() {
         return (
           <div>
             <h1 className="text-center">Employee Database</h1>
-            <h3 className="text-center">
-              Search for an Employee
-            </h3>
+            <form style={{justifyContent:'center', textAlign: 'center'}}>
+                <label>
+                    Search Employees:
+                    <input type="text" id="searchField" onChange={this.handleChange} />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
             <table className="table table-bordered table-striped">
                 <thead className="thead-dark">
                     <tr>

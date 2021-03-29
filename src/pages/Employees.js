@@ -26,7 +26,10 @@ class Employees extends Component {
     handleChange = (event) => {
         const search = event.target.value;
         console.log(search)
-        API.getEmployee().then(res => this.setState({ search }))
+        API.getEmployee().then(res => this.setState({
+            name: this.state.name.filter(search => res.data.results)
+        }
+        )).catch(err => console.log(err))
     }
   
     render() {

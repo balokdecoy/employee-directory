@@ -4,7 +4,8 @@ import Card from "../components/Card/index"
 
 class Employees extends Component {
     state = {
-        name: []
+        name: [],
+        search: "",
     }
 
     componentDidMount() {
@@ -25,13 +26,31 @@ class Employees extends Component {
 
     handleChange = (event) => {
         const search = event.target.value;
-        console.log(search)
-        API.getEmployee().then(res => this.setState({
-            name: this.state.name.filter(search => res.data.results)
-        }
-        )).catch(err => console.log(err))
+        this.setState({search});
     }
-  
+
+    handleSort = () => {
+        const sorted = this.state.name.sort(function(a, b){
+            if(a.name.last < b.name.last) { return -1; }
+            if(a.name.last > b.name.last) { return 1; }
+            return 0;})
+            this.setState({
+                name: sorted
+            })
+    }
+
+    filteredInfo = (search, employee) => {
+        if (!search) {
+            return true;
+        }
+        else if (employee.name.first.includes(search) || employee.name.last.includes(search)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+    }
+      
     render() {
         return (
           <div>
@@ -46,7 +65,7 @@ class Employees extends Component {
             <table className="table table-bordered table-striped">
                 <thead className="thead-dark">
                     <tr>
-                        <th>Name</th>
+                        <th onClick={this.handleSort}>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>City, State</th>
@@ -55,8 +74,8 @@ class Employees extends Component {
                 </thead>
 
                 <tbody>
-                    {this.state.name.map((employee) => (
-                        <tr><td>{employee.name.first} {employee.name.last}</td>
+                    {this.state.name.filter(employee => this.filteredInfo(this.state.search, employee)).map((employee) => (
+                        <tr key={employee.id.value}><td>{employee.name.first} {employee.name.last}</td>
                         <td>{employee.email}</td>
                         <td>{employee.phone}</td>
                         <td>{employee.location.city}, {employee.location.state}</td>

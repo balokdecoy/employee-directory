@@ -26,11 +26,11 @@
 
   ## Deployed
 
-  Coming soon!
+  https://balokdecoy.github.io/employee-directory/ 
 
   ## Screenshots
 
-  Coming soon!
+  ![screenshots](./public/screenshots/homepage.png)
 
   ## Technologies
 

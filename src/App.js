@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div>
         <Wrapper>
-          <Route basename={process.env.PUBLIC_URL} exact path="/" component={Employees} />
+          <Route exact path="/employee-directory" component={Employees} />
         </Wrapper>
         <Footer />
       </div>

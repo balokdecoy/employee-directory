@@ -11,9 +11,8 @@ function App() {
   return (
     <Router>
       <div>
-        {/* <Navbar /> */}
         <Wrapper>
-          <Route exact path="/" component={Employees} />
+          <Route basename={process.env.PUBLIC_URL} exact path="/" component={Employees} />
         </Wrapper>
         <Footer />
       </div>

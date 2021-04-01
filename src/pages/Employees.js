@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Card from "../components/Card/index"
+import Card from "../components/Card/index";
+import Navbar from "../components/Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 class Employees extends Component {
     state = {
@@ -54,18 +56,19 @@ class Employees extends Component {
     render() {
         return (
           <div>
-            <h1 className="text-center">Employee Database</h1>
-            <form style={{justifyContent:'center', textAlign: 'center'}}>
+              <nav className="navbar navbar-expand-lg navbar-light" style={{backgroundColor: "#d4d400"}}>
+            <Link className="navbar-brand" to="/">Hive: An Employee Directory</Link>
+            <form className = "form-inline" >
                 <label>
-                    Search Employees:
-                    <input type="text" id="searchField" onChange={this.handleChange} />
+                    <input type="text" id="searchField" placeHolder="Search..." onChange={this.handleChange}/>
                 </label>
-                <input type="submit" value="Submit" />
             </form>
+        </nav>
+          
             <table className="table table-bordered table-striped">
                 <thead className="thead-dark">
                     <tr>
-                        <th onClick={this.handleSort}>Name</th>
+                        <th>Name<button className="btn btn-sm" style={{backgroundColor: "#d4d400", float: "right"}} onClick={this.handleSort}>Sort A-Z</button></th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th>City, State</th>
